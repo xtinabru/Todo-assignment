@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.todo_assignment.model.Todo
 import com.example.todo_assignment.ui.theme.TodoassignmentTheme
 import com.example.todo_assignment.viewmodel.TodoViewModel
 
@@ -38,17 +39,19 @@ fun TodoScreen(modifier: Modifier = Modifier, todoViewModel: TodoViewModel = vie
 }
 
 @Composable
-fun TodoList(modifier: Modifier = Modifier, todos: List<String>) {
+fun TodoList(modifier: Modifier = Modifier, todos: List<Todo>) {
     LazyColumn(
         modifier = modifier
     ) {
+
         items(todos.size) { index ->
-            val todo = todos[index]
+            val todo = todos[index] // Get the object by index
+
             Text(
-                text = todo,
+                text = todo.title,
                 modifier = Modifier.padding(top = 4.dp, bottom = 4.dp)
             )
-            Divider(color = Color.LightGray, thickness = 2.dp) // Divider in Jetpack Compose
+            Divider(color = Color.LightGray, thickness = 2.dp)
         }
     }
 }
